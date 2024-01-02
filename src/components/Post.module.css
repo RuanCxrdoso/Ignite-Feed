@@ -54,6 +54,8 @@
   display: flex;
   flex-direction: column;
   gap: .3rem;
+
+  user-select: none;
 }
 
 .authorInfo strong {
@@ -64,4 +66,58 @@
   color: var(--gray-400);
   font-size: 0.875rem;
   line-height: 1.4rem;
+  user-select: none;
+}
+
+.commentForm {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--gray-600);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.commentForm > strong {
+  line-height: 1.6rem;
+  color: var(--gray-100);
+}
+
+.commentForm textarea {
+  height: 6rem;
+  background-color: var(--gray-900);
+  color: var(--gray-100);
+  border: none;
+  border-radius: .5rem;
+  padding: .8rem 1rem;
+  resize: none;
+
+  transition: outline .2s;
+}
+
+.commentForm button {
+  width: 6.75rem;
+  height: 3rem;
+  border-radius: .5rem;
+  color: var(--white);
+  background-color: var(--green-500);
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+
+  transition: .3s;
+}
+
+.commentForm button:hover {
+  background-color: var(--green-300);
+}
+
+.commentForm > footer {
+  visibility: hidden;
+  max-height: 0;
+}
+
+.commentForm:focus-within footer {
+  visibility: visible;
+  max-height: none;
 }
