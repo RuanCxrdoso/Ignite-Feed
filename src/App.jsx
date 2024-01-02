@@ -1,24 +1,34 @@
-import { Post } from './post'
-import { Header } from './components/header.jsx'
+import { Header } from './components/Header.jsx'
+import { Sidebar } from './components/Sidebar.jsx';
+import { Post } from './Post'
+
+import styles from './App.module.css';
+
 import './global.css';
+
 
 export function App() {
   return (
     <div>
-      <Header/>
-      <h1>Hello World !</h1>
-      <Post
-        author="Ruan Cardoso"
-        content="Em caminho de paca tatu caminha dentro !"
-      />
-      <Post
-        author="Abne Viado"
-        content="Paca da a volta e tatu caminha atrás !"
-      />
-      <Post
-        author="Magmag"
-        content="Cachorro cotó foi mijar e caiu !"
-      />
+      <Header />
+
+      <div className={styles.wrapper}>
+        <Sidebar />
+        <main>
+          <Post
+            author="Ruan Cardoso"
+            content="Texto do Ruan..."
+          />
+          <Post
+            author="Abne"
+            content="Texto do Abne"
+          />
+          <Post
+            author="Brendo"
+            content="Texto do Brendo"
+          />
+        </main>
+      </div>
     </div>
   )
 }
