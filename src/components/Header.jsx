@@ -1,10 +1,13 @@
 /* eslint-disable react/prop-types */
 import styles from './Header.module.css'
+import igniteLogo from '../assets/ignite-logo.svg'
 
 export function Header() {
   return (
-    <>
-      <h1 className={styles.header}>Ignite Feed</h1>
-    </>
+    <header className={styles.header}>
+      <div>
+        <img src={igniteLogo} alt="Ignite logo" />
+      </div>
+    </header>
   )
 }
