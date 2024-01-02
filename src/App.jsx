@@ -1,6 +1,6 @@
 import { Post } from './post'
 import { Header } from './components/header.jsx'
-import './styles.css';
+import './global.css';
 
 export function App() {
   return (
