@@ -2,6 +2,7 @@
 /* eslint-disable react/prop-types */
 import styles from './Post.module.css'
 
+import { useState } from 'react'
 import { format, formatDistanceToNow } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
 
@@ -17,6 +18,22 @@ export function Post({ author, content, publishedAt }) {
     locale: ptBR,
     addSuffix: true
   })
+
+  const [newComment, setNewComment] = useState('')
+
+  const [comments, setComments] = useState([])
+
+  function handleCreateNewComment() {
+    event.preventDefault()
+
+    setComments([...comments, newComment])
+
+    setNewComment('')
+  }
+
+  function newCommentText() {
+    setNewComment(event.target.value)
+  }
 
   return (
     <article className={styles.post}>
@@ -48,17 +65,23 @@ export function Post({ author, content, publishedAt }) {
         })}
       </div>
 
-      <form className={styles.commentForm}>
+      <form onSubmit={handleCreateNewComment} className={styles.commentForm}>
         <strong>Deixe seu feedback</strong>
-        <textarea placeholder='Deixe um comentário...'/>
+        <textarea 
+          onChange={newCommentText} 
+          name='comment'
+          value={newComment}
+          placeholder='Deixe um comentário...'
+        />
         <footer>
           <button type='submit'>Publicar</button>
         </footer>
       </form>
 
       <div className={styles.commentList}>
-        <Comment />
-        <Comment />
+        {comments.map(comment => {
+          return <Comment text={comment}/>
+        })}
       </div>
     </article>
   )
