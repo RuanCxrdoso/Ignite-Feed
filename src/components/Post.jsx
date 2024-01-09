@@ -26,8 +26,6 @@ export function Post({ author, content, publishedAt }) {
 
   function handleNewCommentInvalid() {
     event.target.setCustomValidity('Esse campo é obrigatório !')
-
-
   }
 
   function handleCreateNewComment() {
