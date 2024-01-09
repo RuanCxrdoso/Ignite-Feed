@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-key */
 /* eslint-disable react/prop-types */
 import styles from './Post.module.css'
 
@@ -35,6 +34,12 @@ export function Post({ author, content, publishedAt }) {
     setNewComment(event.target.value)
   }
 
+  function deleteComment(comment) {
+    const commentsWithoutDeletedOne = comments.filter(otherComments => otherComments !== comment)
+
+    setComments(commentsWithoutDeletedOne)
+  }
+
   return (
     <article className={styles.post}>
       <header>
@@ -55,11 +60,11 @@ export function Post({ author, content, publishedAt }) {
         {content.map(line => {
           if (line.type == "paragraph") {
             return (
-              <p>{line.content}</p>
+              <p key={line.content}>{line.content}</p>
             )
           } else {
             return (
-              <p><a href="#">{line.content}</a></p>
+              <p key={line.content}><a href="#">{line.content}</a></p>
             )
           }
         })}
@@ -80,7 +85,13 @@ export function Post({ author, content, publishedAt }) {
 
       <div className={styles.commentList}>
         {comments.map(comment => {
-          return <Comment text={comment}/>
+          return (
+            <Comment 
+              key={comment} 
+              text={comment} 
+              onDeleteComment={deleteComment}
+            />
+          )
         })}
       </div>
     </article>
