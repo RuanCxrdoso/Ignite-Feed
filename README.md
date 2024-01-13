@@ -1,30 +1,29 @@
-# React + TypeScript + Vite
+# Ignite Feed 🚀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Project cover](./src/assets/preview1.png)
+# Simulando o Feed de uma rede social 🛜
 
-Currently, two official plugins are available:
+> ## Descrição 📚
+O Ignite Feed é um projeto desenvolvido na trilha de React do Ignite, oferecido pela Rocketseat. Esta simulação de um feed de rede social é uma aplicação interativa, construída com React, TypeScript e Vite. Nele, os usuários podem adicionar e excluir comentários, além de expressar sua apreciação através de likes nos comentários. Uma experiência que destaca habilidades essenciais de desenvolvimento front-end e proporciona uma visão prática do mundo das aplicações web modernas.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<br>
+<br>
 
-## Expanding the ESLint configuration
+> ## Tecnologias 👨🏾‍💻
+Foram utilizadas as seguintes tecnologias neste projeto:
++ Front-End :
+  -  React
+  -  Typescript
+  -  Vite
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+<br>
+<br>
 
-- Configure the top-level `parserOptions` property like this:
+> ## Printscreen do Projeto 📸
+![Project print](./src/assets/preview2.png)
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+<br>
+<br>
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+> ## Autor 📝
++ [Ruan Cardoso](https://www.linkedin.com/in/ruancardosolinkdin/)
