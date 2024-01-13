@@ -1,34 +1,55 @@
-/* eslint-disable react/prop-types */
 import styles from './Post.module.css'
 
-import { useState } from 'react'
+import { ChangeEvent, FormEvent, InvalidEvent, useState } from 'react'
 import { format, formatDistanceToNow } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
 
 import { Comment } from './Comment.jsx'
 import { Avatar } from './Avatar.jsx'
 
-export function Post({ author, content, publishedAt }) {
-  const publishedDateFormatted = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
+interface Author {
+  avatarUrl: string;
+  name: string;
+  role: string;
+}
+
+interface Content {
+  type: 'paragraph' | 'link',
+  content: string
+}
+
+export interface PostType {
+  id: number,
+  author: Author,
+  content: Content[],
+  publishedAt: Date
+}
+
+interface PostProps {
+  post: PostType
+}
+
+export function Post({ post }: PostProps) {
+  const publishedDateFormatted = format(post.publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
     locale: ptBR
   })
 
-  const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
+  const publishedDateRelativeToNow = formatDistanceToNow(post.publishedAt, {
     locale: ptBR,
     addSuffix: true
   })
 
-  const [newComment, setNewComment] = useState('')
+  const [newComment, setNewComment] = useState<string>('')
 
-  const [comments, setComments] = useState([])
+  const [comments, setComments] = useState<string[]>([])
 
   const isNewCommentEmpty = newComment === '' ? true : false
 
-  function handleNewCommentInvalid() {
+  function handleNewCommentInvalid(event: InvalidEvent<HTMLTextAreaElement>) {
     event.target.setCustomValidity('Esse campo é obrigatório !')
   }
 
-  function handleCreateNewComment() {
+  function handleCreateNewComment(event: FormEvent) {
     event.preventDefault()
 
     setComments([...comments, newComment])
@@ -36,12 +57,12 @@ export function Post({ author, content, publishedAt }) {
     setNewComment('')
   }
 
-  function newCommentText() {
+  function handleNewCommentText(event: ChangeEvent<HTMLTextAreaElement>) {
     event.target.setCustomValidity('')
     setNewComment(event.target.value)
   }
 
-  function deleteComment(comment) {
+  function deleteComment(comment: string) {
     const commentsWithoutDeletedOne = comments.filter(otherComments => otherComments !== comment)
 
     setComments(commentsWithoutDeletedOne)
@@ -51,20 +72,20 @@ export function Post({ author, content, publishedAt }) {
     <article className={styles.post}>
       <header>
         <div className={styles.author}>
-          <Avatar src={author.avatarUrl} />
+          <Avatar src={post.author.avatarUrl} />
           <div className={styles.authorInfo}>
-            <strong>{author.name}</strong>
-            <span>{author.role}</span>
+            <strong>{post.author.name}</strong>
+            <span>{post.author.role}</span>
           </div>
         </div>
 
-        <time title={publishedDateFormatted} dateTime={publishedAt.toISOString()}>
+        <time title={publishedDateFormatted} dateTime={post.publishedAt.toISOString()}>
           {publishedDateRelativeToNow}
         </time>
       </header>
 
       <div className={styles.content}>
-        {content.map(line => {
+        {post.content.map(line => {
           if (line.type == "paragraph") {
             return (
               <p key={line.content}>{line.content}</p>
@@ -80,7 +101,7 @@ export function Post({ author, content, publishedAt }) {
       <form onSubmit={handleCreateNewComment} className={styles.commentForm}>
         <strong>Deixe seu feedback</strong>
         <textarea 
-          onChange={newCommentText} 
+          onChange={handleNewCommentText} 
           name='comment'
           value={newComment}
           placeholder='Deixe um comentário...'

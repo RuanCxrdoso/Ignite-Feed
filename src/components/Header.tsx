@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import styles from './Header.module.css'
 import igniteLogo from '../assets/ignite-logo.svg'
 

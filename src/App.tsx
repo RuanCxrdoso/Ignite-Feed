@@ -1,23 +1,23 @@
+import styles from './App.module.css';
+
 import { Header } from './components/Header.jsx'
 import { Sidebar } from './components/Sidebar.jsx'
-import { Post } from './components/Post.jsx'
-
-import styles from './App.module.css';
+import { Post, PostType } from './components/Post.jsx'
 
 import './global.css';
 
-const posts = [
+const posts: PostType[] = [
   {
     id: 1,
     author: {
-      avatarUrl: "https://github.com/puacorreia.png",
-      name: "Mike Santos",
-      role: "Engenheira da Computação"
+      avatarUrl: "https://github.com/diego3g.png",
+      name: "Diego Fernandes",
+      role: "CTO Rocketseat"
     },
     content: [
       { type: "paragraph", content: "Fala galera 😁" },
-      { type: "paragraph", content: "Acabei de receber um SIM para um cargo de Engenheira da Computação ! Será uma jornada incrível 🚀" },
-      { type: "link", content: "mike.job/engComp" },
+      { type: "paragraph", content: "O curso de React + Typescript + Next da Rocketseat foi lançado ! 🚀" },
+      { type: "link", content: "diego3g.job/Rckt" },
     ],
     publishedAt: new Date('2023-12-29 10:36:16')
   },
@@ -30,7 +30,7 @@ const posts = [
     },
     content: [
       { type: "paragraph", content: "Olá rede, tenho uma dúvida 🤔 " },
-      { type: "paragraph", content: "Como posso integrar um banco de dados desenvolvido python com meu app web feito cm Js ?" },
+      { type: "paragraph", content: "Como posso integrar um banco de dados desenvolvido em python com meu app web feito com Js ?" },
       { type: "link", content: "marley.edu/CC" },
     ],
     publishedAt: new Date('2023-12-31 08:12:10')
@@ -59,13 +59,11 @@ export function App() {
       <div className={styles.wrapper}>
         <Sidebar />
         <main>
-          {posts.map(({ id, author, content, publishedAt }) => {
+          {posts.map((posts) => {
             return (
               <Post 
-                key={id}
-                author={author}
-                content={content}
-                publishedAt={publishedAt}
+                key={posts.id}
+                post={posts}
               />
             )
           })}
