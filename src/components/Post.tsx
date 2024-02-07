@@ -31,11 +31,11 @@ interface PostProps {
 
 export function Post({ post }: PostProps) {
   const publishedDateFormatted = format(post.publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
-    locale: ptBR
+    // locale: ptBR
   })
 
   const publishedDateRelativeToNow = formatDistanceToNow(post.publishedAt, {
-    locale: ptBR,
+    // locale: ptBR,
     addSuffix: true
   })
 
