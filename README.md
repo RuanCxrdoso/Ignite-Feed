@@ -96,7 +96,7 @@ Veja uma demonstração das principais interfaces da aplicação:
 
 <p align="center">
   <img
-    src="./src/assets/preview2.png"
+    src="https://github.com/RuanCxrdoso/Ignite-Feed/assets/86266893/268bc1b1-faf8-40df-9dc4-9dc753f42969"
     alt=""
     width="100%"
   />
